@@ -12,7 +12,7 @@ client = udp_client.SimpleUDPClient('127.0.0.1', 57110)
 p5 = udp_client.SimpleUDPClient('127.0.0.1', 24000)
 
 # maxmsp 로 메시지는 보내기 위한 OSC 클라이언트
-maxmsp = udp_client.SimpleUDPClient('127.0.0.1', 5000) #5000이 아닐 수 있음
+maxmsp = udp_client.SimpleUDPClient('127.0.0.1', 2000) #2000이 아닐 수 있음. maxmsp에서 확인하기
 
 # OSC 메시지 처리 함수들
 def filter_handle(addr, filter1, filter2):
@@ -35,6 +35,7 @@ def scsynth(addr, freq):
 dispatcher.map('/filter', filter_handle)
 dispatcher.map('/amp', amp_handle)
 dispatcher.map('/scsynth', scsynth)
+dispatcher.map('/eye_left', filter_handle)
 
 # 서버 세팅 ( 서버 주소 설정 및 서버로 메시지가 전달될때 처리할 Dispatcher 등록)
 osc_server = osc_server.ThreadingOSCUDPServer(('127.0.0.1', 2000), dispatcher)

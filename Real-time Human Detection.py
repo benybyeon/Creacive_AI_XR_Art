@@ -36,7 +36,7 @@ hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
 cv2.startWindowThread()
 
 # open webcam video stream
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)
 
 # the output will be written to output.avi
 out = cv2.VideoWriter(
